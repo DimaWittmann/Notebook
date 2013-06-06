@@ -2,12 +2,14 @@ package com.wittmann.notebook;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+
 public class NotesData {
 	
 	
 	public ArrayList<Entry> Entries;
 	
-	public NotesData(){
+	public NotesData(Context context){
 		Entries = new ArrayList<Entry>();
 	}
 	public void addEntry(String title, String time, String desc){

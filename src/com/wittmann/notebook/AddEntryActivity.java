@@ -16,6 +16,7 @@ public class AddEntryActivity extends Activity
 	EditText time;
 	EditText desc;
 	Button add;
+	NotebookApplication app;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
@@ -29,13 +30,15 @@ public class AddEntryActivity extends Activity
 		 add = (Button) findViewById(R.id.add);
 		 add.setOnClickListener(this);
 		 
+		 app = (NotebookApplication) getApplicationContext();
+		
+		 
 	}
 	
 	@Override
 	public void onClick(View v) {
-		Entry entry = new Entry(title.getText().toString(),
-				date.getText().toString()+ time.getText().toString(), desc.getText().toString()); 
-		
+		app.data.addEntry(title.getText().toString(), date.getText().toString()+
+				time.getText().toString(), desc.getText().toString());
 	}
 
 }
