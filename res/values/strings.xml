@@ -7,4 +7,5 @@
     <string name="addEntryButton">Save</string>
     <string name="addEntryDescription">Short description of problem</string>
     <string name="showEntriesTitle">User entries</string>
+    <string name="toShowMenuTitle">Recent entries</string>
 </resources>

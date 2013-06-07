@@ -1,8 +1,10 @@
 package com.wittmann.notebook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
+
 
 public class NotesData {
 	
@@ -15,9 +17,9 @@ public class NotesData {
 	public void addEntry(String title, String time, String desc){
 		Entries.add(new Entry(title, time, desc));
 	}
-	
-	public Entry[] getEntries(){
-		return (Entry[]) Entries.toArray();
+	 
+	public List<Entry> getEntries(){
+		return Entries;
 	}
 
 }
