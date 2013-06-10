@@ -4,14 +4,11 @@ import android.app.Application;
 
 public class NotebookApplication extends Application{
 	
-	NotesData data;
+	DBHelper DBhelper;
 
 	public void onCreate() {
 		super.onCreate();
-		data = new NotesData(this);
+		DBhelper = new DBHelper(this);
 	}
-	
-	public void onTerminate() {
-		super.onTerminate();
-	}
+
 }
