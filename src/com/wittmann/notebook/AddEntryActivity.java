@@ -1,7 +1,10 @@
 package com.wittmann.notebook;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -17,7 +20,7 @@ import android.widget.EditText;
 public class AddEntryActivity extends Activity
 							  implements OnClickListener{
 
-	
+	private static final String TAG = AddEntryActivity.class.getSimpleName();
 	EditText title;
 	EditText date;
 	EditText time;
@@ -44,8 +47,21 @@ public class AddEntryActivity extends Activity
 	
 	@Override
 	public void onClick(View v) {
-		app.data.addEntry(title.getText().toString(), date.getText().toString()+" "+
-				time.getText().toString(), desc.getText().toString());
+		ContentValues cv = new ContentValues();
+		cv.put(Entry.TITLE, title.getText().toString());
+		cv.put(Entry.DATE, date.getText().toString());
+		cv.put(Entry.TIME, time.getText().toString());
+		cv.put(Entry.DESC, desc.getText().toString());
+		SQLiteDatabase db = app.DBhelper.getWritableDatabase();
+		try{
+			db.insertOrThrow(DBHelper.TableName, null, cv);
+		}catch(SQLException e){
+			Log.e(TAG, " Can`t insert new entry");
+		}finally{
+			db.close();
+		}
+		
+		
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
