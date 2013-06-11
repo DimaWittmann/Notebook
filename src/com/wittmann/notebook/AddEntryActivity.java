@@ -56,7 +56,7 @@ public class AddEntryActivity extends Activity
 		try{
 			db.insertOrThrow(DBHelper.TableName, null, cv);
 		}catch(SQLException e){
-			Log.e(TAG, " Can`t insert new entry");
+			Log.e(TAG, e.getMessage());
 		}finally{
 			db.close();
 		}
