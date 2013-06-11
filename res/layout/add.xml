@@ -4,7 +4,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TableRow
+    <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -25,33 +26,29 @@
 
         </EditText>
 
-    </TableRow>
+    </LinearLayout>
 
-    <TableRow
+    <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/tableRow2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addEntryTime" />
 
-        <EditText
+        <Button
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date" />
+            android:layout_weight="1"
+            android:text="@string/addEntryDate" />
 
-        <EditText
+        <Button
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            android:layout_weight="1"
+            android:text="@string/addEntryTime" />
 
-    </TableRow>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/desc"

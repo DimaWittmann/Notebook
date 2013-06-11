@@ -9,7 +9,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" 
             android:gravity="center"
-            android:textColor="#ffffff">
+            android:textColor="#000000">
 
         </TextView>
     <LinearLayout
@@ -17,18 +17,20 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/entityTime"
+            android:id="@+id/entityDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1" 
+            android:textColor="#000000">
 
         </TextView>
 
         <TextView
-            android:id="@+id/entityDate"
+            android:id="@+id/entityTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="#000000"/>
         
 
     </LinearLayout>
@@ -36,6 +38,7 @@
     <TextView
         android:id="@+id/entityDesc"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent" 
+        android:textColor="#000000"/>
 
 </LinearLayout>

@@ -3,9 +3,12 @@
     <string name="app_name">Notebook</string>
     <string name="addEntryTitle">New entry</string>
     <string name="addEntryAssigment">Assignment</string>
-    <string name="addEntryTime">Time</string>
+    <string name="addEntryTime">SET TIME</string>
     <string name="addEntryButton">Save</string>
     <string name="addEntryDescription">Short description of problem</string>
     <string name="showEntriesTitle">User entries</string>
     <string name="toShowMenuTitle">Recent entries</string>
+    <string name="ToastAddEntry">New entry added</string>
+    <string name="ToastAddEntryError">Failed to add new entry</string>
+    <string name="addEntryDate">SET DATE</string>
 </resources>
