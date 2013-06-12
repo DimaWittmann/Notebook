@@ -6,9 +6,10 @@
     <string name="addEntryTime">SET TIME</string>
     <string name="addEntryButton">Save</string>
     <string name="addEntryDescription">Short description of problem</string>
-    <string name="showEntriesTitle">User entries</string>
+    <string name="showEntriesTitle">Assigments</string>
     <string name="toShowMenuTitle">Recent entries</string>
     <string name="ToastAddEntry">New entry added</string>
     <string name="ToastAddEntryError">Failed to add new entry</string>
     <string name="addEntryDate">SET DATE</string>
+    <string name="addEntityMI">Add new entity</string>
 </resources>

@@ -23,8 +23,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class AddEntryActivity extends Activity
-							  implements OnClickListener{
+public class AddEntryActivity extends Activity{
 
 	private static final String TAG = AddEntryActivity.class.getSimpleName();
 	
@@ -52,33 +51,12 @@ public class AddEntryActivity extends Activity
 		 time.setOnClickListener(new TimeButtonListener());
 		 
 		 add = (Button) findViewById(R.id.add);
-		 add.setOnClickListener(this);
+		 add.setOnClickListener(new SaveButtonListener());
 		 
 		 app = (NotebookApplication) getApplication();
-		
-		 
 	}
 	
-	@Override
-	public void onClick(View v) {
-		ContentValues cv = new ContentValues();
-		cv.put(Entry.TITLE, title.getText().toString());
-		cv.put(Entry.DATE, date.getText().toString());
-		cv.put(Entry.TIME, time.getText().toString());
-		cv.put(Entry.DESC, desc.getText().toString());
-		SQLiteDatabase db = app.DBhelper.getWritableDatabase();
-		try{
-			db.insertOrThrow(DBHelper.TableName, null, cv);
-			Toast.makeText(getApplicationContext(), R.string.ToastAddEntry, Toast.LENGTH_SHORT).show();
-		}catch(SQLException e){
-			Log.e(TAG, e.getMessage());
-			Toast.makeText(getApplicationContext(), R.string.ToastAddEntryError, Toast.LENGTH_SHORT).show();
-		}finally{
-			db.close();
-		}
-		
-		
-	}
+
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -100,6 +78,42 @@ public class AddEntryActivity extends Activity
 		return true;
 	}
 	
+	private class SaveButtonListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			ContentValues cv = new ContentValues();
+			cv.put(Entry.TITLE, title.getText().toString());
+			
+			cv.put(Entry.YEAR, dateAndTime.get(Calendar.YEAR));
+			cv.put(Entry.MONTH, dateAndTime.get(Calendar.MONTH));
+			cv.put(Entry.DAY, dateAndTime.get(Calendar.DAY_OF_MONTH));
+			
+			cv.put(Entry.HOUR, dateAndTime.get(Calendar.HOUR_OF_DAY));
+			cv.put(Entry.MINUTE, dateAndTime.get(Calendar.MINUTE));
+
+			cv.put(Entry.DESC, desc.getText().toString());
+			SQLiteDatabase db = app.DBhelper.getWritableDatabase();
+			
+			try{
+				db.insertOrThrow(DBHelper.TableName, null, cv);
+				Toast.makeText(getApplicationContext(), R.string.ToastAddEntry, Toast.LENGTH_SHORT).show();
+			}catch(SQLException e){
+				Log.e(TAG, e.getMessage());
+				Toast.makeText(getApplicationContext(), R.string.ToastAddEntryError, Toast.LENGTH_SHORT).show();
+			}finally{
+				db.close();
+			}
+			
+			title.setText("");
+			date.setText(getString(R.string.addEntryDate));
+			time.setText(getString(R.string.addEntryTime));
+			desc.setText("");
+			
+			startActivity(new Intent(AddEntryActivity.this, ShowEntriesActivity.class));
+		}
+		
+	}
 	
 	private class DateListener implements OnDateSetListener{
 		@Override

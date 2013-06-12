@@ -13,7 +13,13 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String TableName = "assignments";
 	private static final String DBName = "assignments.db";
 	private static final int DBVersion = 2;
-	Context context;
+	public Context context;
+	
+	public String query = String.format(
+			"CREATE TABLE IF NOT EXISTS %s (%s integer primary key autoincrement not null, " +
+			"%s text, %s integer, %s integer, %s integer, %s integer, %s integer, %s  text)", 
+			TableName, Entry.ID, Entry.TITLE,  Entry.YEAR, Entry.MONTH, Entry.DAY, Entry.HOUR, 
+			Entry.MINUTE, Entry.DESC);
 
 	public DBHelper(Context context) {
 		super(context, DBName, null, DBVersion);
@@ -23,29 +29,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Log.d(TAG, "onCreate");
-		String query = String.format("CREATE TABLE %s (%s integer primary key autoincrement not null, " +
-				"%s text, %s text, %s text,%s  text)", 
-				TableName, Entry.ID, Entry.TITLE,  Entry.DATE, Entry.TIME, Entry.DESC);
 		db.execSQL(query);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.d(TAG, "onUpgrade");
 		db.execSQL(String.format("drop table if exists %s", TableName));
 		onCreate(db);
 	}
 
-	public void onOpen(SQLiteDatabase db){
-		Log.d(TAG, "onOpen");
-	
-		String query = String.format(
-				"CREATE TABLE IF NOT EXISTS %s (%s integer primary key autoincrement not null, " +
-				"%s text, %s text, %s text, %s  text)", 
-				TableName, Entry.ID, Entry.TITLE,  Entry.DATE, Entry.TIME, Entry.DESC);
-		
+	public void onOpen(SQLiteDatabase db){	
 		db.execSQL(query);
-		
 	}
 }
