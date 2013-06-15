@@ -12,4 +12,15 @@
     <string name="ToastAddEntryError">Failed to add new entry</string>
     <string name="addEntryDate">SET DATE</string>
     <string name="addEntityMI">Add new entity</string>
+    <string-array name="approximatelyLeft">
+        <item >nothing to say</item>
+        <item >approximately one year left</item>
+        <item >approximately %d years left</item>
+        <item >approximately one month left</item>
+        <item >approximately %d month left</item>
+        <item >approximately %d days left</item>
+        <item >approximately %d hours left</item>
+        <item >approximately %d minutes left</item>
+        <item >time is come</item>
+    </string-array>
 </resources>

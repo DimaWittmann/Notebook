@@ -6,7 +6,9 @@ import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -58,13 +60,6 @@ public class AddEntryActivity extends Activity{
 	
 
 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.addactivitymenu, menu);
-		
-		return true;	
-	}
-	
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch (item.getItemId()) {
 		case R.id.toShowActivity:
@@ -111,6 +106,13 @@ public class AddEntryActivity extends Activity{
 			desc.setText("");
 			
 			startActivity(new Intent(AddEntryActivity.this, ShowEntriesActivity.class));
+		}
+
+		public boolean onCreateOptionsMenu(Menu menu) {
+			MenuInflater inflater = getMenuInflater();
+			inflater.inflate(R.menu.addactivitymenu, menu);
+			
+			return true;	
 		}
 		
 	}
@@ -166,4 +168,13 @@ public class AddEntryActivity extends Activity{
 		
 	}
 	
+	private class NewEntryReciever extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			
+			
+		}
+		
+	}
 }
